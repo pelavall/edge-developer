@@ -285,37 +285,38 @@ To create your extension with native messaging in Visual Studio:
 9. Copy all your extension files into the Extension folder.
 10. Modify the `AppXManifest` file in the AppX folder to include extension metadata and convert it to a headless app:
 
-```xml
-<Package
-xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
-xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" 
-xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
-xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" 
-xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
-IgnorableNamespaces="uap uap3 mp rescap build" 
-xmlns:build="http://schemas.microsoft.com/developer/appx/2015/build">
- 
-<Dependencies>
-	<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.15002.0" MaxVersionTested="10.0.15002.0" />
-</Dependencies>
- 
-   <Application Id="App" Executable="MessagingHost1.exe"
-	EntryPoint="MessagingHost1.App">
-      <uap:VisualElements AppListEntry="none" DisplayName="MessagingHost1"
-	Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="MessagingHost1" BackgroundColor="transparent">
-      </uap:VisualElements>
-      <Extensions>
-		<uap3:Extension Category="windows.appExtension">
-			<uap3:AppExtension
-				Name="com.microsoft.edge.extension"
-				Id="EdgeExtension"
-				PublicFolder="Extension"
-				DisplayName="ms-resource:DisplayName">
-			</uap3:AppExtension>
-		</uap3:Extension>
-      </Extensions>
-</Application>
-```
+
+	```xml
+	<Package
+	xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
+	xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" 
+	xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
+	xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" 
+	xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+	IgnorableNamespaces="uap uap3 mp rescap build" 
+	xmlns:build="http://schemas.microsoft.com/developer/appx/2015/build">
+
+	<Dependencies>
+		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.15002.0" MaxVersionTested="10.0.15002.0" />
+	</Dependencies>
+
+	   <Application Id="App" Executable="MessagingHost1.exe"
+		EntryPoint="MessagingHost1.App">
+	      <uap:VisualElements AppListEntry="none" DisplayName="MessagingHost1"
+		Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="MessagingHost1" BackgroundColor="transparent">
+	      </uap:VisualElements>
+	      <Extensions>
+			<uap3:Extension Category="windows.appExtension">
+				<uap3:AppExtension
+					Name="com.microsoft.edge.extension"
+					Id="EdgeExtension"
+					PublicFolder="Extension"
+					DisplayName="ms-resource:DisplayName">
+				</uap3:AppExtension>
+			</uap3:Extension>
+	      </Extensions>
+	</Application>
+	```
  
 ## Adding a Desktop Bridge component 
 If you want to add a Desktop Bridge component to your package, you'll need to create and build your Win32 project in Visual Studio. For info on how to convert your win32 app to UWP, see [Porting apps to Windows 10 via Desktop Bridge](https://docs.microsoft.com/en-us/windows/uwp/porting/desktop-to-uwp-root). Once built in Visual Studio, you can add the Win32 executable to the package by doing the following steps:
